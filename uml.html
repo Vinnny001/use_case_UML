@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Object-Oriented Systems Analysis — Questions 1–18</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.7;
+    padding: 0;
+  }
+  .cover {
+    page-break-after: always;
+    text-align: center;
+    padding: 120px 60px 80px;
+    background: #f8f7f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .cover h2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  .cover .meta {
+    font-size: 13px;
+    color: #888;
+    margin-top: 60px;
+    line-height: 2;
+  }
+  .cover .divider {
+    width: 80px;
+    height: 3px;
+    background: #2563eb;
+    margin: 24px auto;
+  }
+
+  .page {
+    padding: 40px 52px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Question header */
+  .q-header {
+    page-break-before: always;
+    border-left: 4px solid #2563eb;
+    padding: 8px 0 8px 16px;
+    margin-bottom: 20px;
+    margin-top: 8px;
+  }
+  .q-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .q-header p {
+    font-size: 12px;
+    color: #555;
+    margin-top: 2px;
+  }
+
+  /* Sub-question label */
+  .sub-q {
+    font-weight: 700;
+    color: #2563eb;
+    margin: 18px 0 6px;
+    font-size: 13px;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 16px 0 6px;
+    color: #1a1a1a;
+  }
+
+  p { margin-bottom: 10px; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 12px;
+  }
+  th {
+    background: #2563eb;
+    color: #fff;
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f9fafb; }
+
+  /* Diagram containers */
+  .diagram-box {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background: #fafafa;
+    text-align: center;
+    page-break-inside: avoid;
+  }
+  .diagram-box svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .diagram-caption {
+    font-size: 11px;
+    color: #888;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Info boxes */
+  .info-box {
+    background: #eff6ff;
+    border-left: 3px solid #2563eb;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+  }
+  .warn-box {
+    background: #fef9ee;
+    border-left: 3px solid #d97706;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+  }
+
+  ul, ol {
+    padding-left: 22px;
+    margin: 8px 0;
+  }
+  li { margin-bottom: 4px; }
+
+  .key-diff {
+    display: flex;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .kd-col {
+    flex: 1;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .kd-col h4 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #2563eb;
+  }
+
+  .notation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .notation-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: #fafafa;
+  }
+  .notation-item strong {
+    font-size: 12px;
+    color: #1a1a1a;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .notation-item span {
+    font-size: 11px;
+    color: #555;
+  }
+
+  .page-break { page-break-before: always; }
+  .no-break { page-break-inside: avoid; }
+
+  /* Footer */
+  @page {
+    margin: 18mm 16mm 18mm 16mm;
+    @bottom-center {
+      content: "Object-Oriented Systems Analysis  |  Page " counter(page);
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      color: #aaa;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <h1>Object-Oriented Systems Analysis &amp; Design</h1>
+  <div class="divider"></div>
+  <h2>Complete Study Notes — Questions 1 to 18</h2>
+  <p style="color:#777;font-size:13px;max-width:500px;line-height:1.8;">
+    Covering UML use case diagrams, class diagrams, sequence diagrams,<br>
+    OO concepts, relationships, and modelling approaches.
+  </p>
+  <div class="meta">
+    Includes diagrams for all applicable questions<br>
+    Generated 2026
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ==================== Q1 ==================== -->
+<div class="q-header">
+  <h2>Question 1 — &lt;&lt;include&gt;&gt; vs &lt;&lt;extend&gt;&gt; Relationships</h2>
+  <p>Use a library system to illustrate the difference</p>
+</div>
+
+<p>Both <strong>&lt;&lt;include&gt;&gt;</strong> and <strong>&lt;&lt;extend&gt;&gt;</strong> are dependency stereotypes in UML use case diagrams, but they differ in whether the linked behaviour is mandatory or conditional.</p>
+
+<div class="key-diff no-break">
+  <div class="kd-col">
+    <h4>&lt;&lt;include&gt;&gt;</h4>
+    <p>The base use case <em>always</em> calls the included use case — the behaviour is mandatory and reusable. The arrow points <strong>from</strong> the base <strong>to</strong> the included case.</p>
+    <p><em>Library example:</em> <strong>Borrow Book</strong> &lt;&lt;include&gt;&gt; <strong>Verify Membership</strong> — you can never borrow without checking membership.</p>
+  </div>
+  <div class="kd-col">
+    <h4>&lt;&lt;extend&gt;&gt;</h4>
+    <p>The extending use case <em>optionally</em> adds behaviour to the base under a specific condition. The arrow points <strong>from</strong> the extension <strong>to</strong> the base.</p>
+    <p><em>Library example:</em> <strong>Return Book</strong> is extended by <strong>Charge Fine</strong> — a fine is only raised when the book is overdue.</p>
+  </div>
+</div>
+
+<table>
+  <tr><th>Dimension</th><th>&lt;&lt;include&gt;&gt;</th><th>&lt;&lt;extend&gt;&gt;</th></tr>
+  <tr><td>Execution</td><td>Always, unconditionally</td><td>Only when a condition is met</td></tr>
+  <tr><td>Arrow direction</td><td>Base → Included</td><td>Extension → Base</td></tr>
+  <tr><td>Dependency</td><td>Base needs the included case</td><td>Base is complete without it</td></tr>
+  <tr><td>Purpose</td><td>Factor out shared mandatory behaviour</td><td>Add optional/exceptional behaviour</td></tr>
+  <tr><td>Library example</td><td>Borrow Book → Verify Membership</td><td>Return Book ← Charge Fine</td></tr>
+</table>
+
+<div class="diagram-box no-break">
+<svg width="680" height="420" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="dh1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<!-- System boundary -->
+<rect x="150" y="30" width="510" height="380" rx="10" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="8 4"/>
+<text x="405" y="52" text-anchor="middle" font-size="12" fill="#888" font-family="Arial">Library System</text>
+
+<!-- Actor -->
+<ellipse cx="68" cy="160" rx="16" ry="16" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="68" y1="176" x2="68" y2="210" stroke="#333" stroke-width="1"/>
+<line x1="50" y1="190" x2="86" y2="190" stroke="#333" stroke-width="1"/>
+<line x1="68" y1="210" x2="52" y2="232" stroke="#333" stroke-width="1"/>
+<line x1="68" y1="210" x2="84" y2="232" stroke="#333" stroke-width="1"/>
+<text x="68" y="248" text-anchor="middle" font-size="12" fill="#333" font-family="Arial">Member</text>
+
+<!-- Teal use cases -->
+<ellipse cx="295" cy="110" rx="100" ry="26" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="295" y="114" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041" font-family="Arial">Borrow book</text>
+<ellipse cx="295" cy="200" rx="100" ry="26" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="295" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041" font-family="Arial">Return book</text>
+<ellipse cx="295" cy="340" rx="110" ry="26" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="295" y="344" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041" font-family="Arial">Search catalogue</text>
+
+<!-- Purple use cases -->
+<ellipse cx="545" cy="110" rx="110" ry="26" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="545" y="114" text-anchor="middle" font-size="12" font-weight="bold" fill="#26215c" font-family="Arial">Verify membership</text>
+<ellipse cx="545" cy="340" rx="105" ry="26" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="545" y="344" text-anchor="middle" font-size="12" font-weight="bold" fill="#26215c" font-family="Arial">View book details</text>
+
+<!-- Coral extend -->
+<ellipse cx="545" cy="200" rx="95" ry="26" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+<text x="545" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#4a1b0c" font-family="Arial">Charge fine</text>
+
+<!-- Actor associations -->
+<line x1="84" y1="152" x2="193" y2="112" stroke="#aaa" stroke-width="0.8"/>
+<line x1="84" y1="166" x2="193" y2="200" stroke="#aaa" stroke-width="0.8"/>
+<line x1="84" y1="175" x2="183" y2="335" stroke="#aaa" stroke-width="0.8"/>
+
+<!-- include: Borrow → Verify -->
+<path d="M395 110 L433 110" fill="none" stroke="#555" stroke-width="0.9" stroke-dasharray="5 3" marker-end="url(#dh1)"/>
+<text x="414" y="103" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">«include»</text>
+
+<!-- extend: Charge Fine → Return Book -->
+<path d="M450 200 L397 200" fill="none" stroke="#555" stroke-width="0.9" stroke-dasharray="5 3" marker-end="url(#dh1)"/>
+<text x="424" y="193" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">«extend»</text>
+
+<!-- include: Search → View details -->
+<path d="M405 340 L438 340" fill="none" stroke="#555" stroke-width="0.9" stroke-dasharray="5 3" marker-end="url(#dh1)"/>
+<text x="422" y="333" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">«include»</text>
+
+<!-- Legend -->
+<rect x="155" y="386" width="500" height="24" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="0.5"/>
+<line x1="170" y1="398" x2="205" y2="398" stroke="#555" stroke-dasharray="5 3" stroke-width="0.9" marker-end="url(#dh1)"/>
+<text x="212" y="402" font-size="10" fill="#555" font-family="Arial">«include» — always executes</text>
+<line x1="385" y1="398" x2="420" y2="398" stroke="#555" stroke-dasharray="5 3" stroke-width="0.9" marker-end="url(#dh1)"/>
+<text x="427" y="402" font-size="10" fill="#555" font-family="Arial">«extend» — optional/conditional</text>
+</svg>
+<div class="diagram-caption">Figure 1.1 — Library system use case diagram showing &lt;&lt;include&gt;&gt; and &lt;&lt;extend&gt;&gt;</div>
+</div>
+
+<!-- ==================== Q2 ==================== -->
+<div class="q-header">
+  <h2>Question 2 — Airline Reservation System</h2>
+  <p>Use case diagram and class diagram for the full system</p>
+</div>
+
+<div class="sub-q">i. Use Case Diagram</div>
+<p>The system has two primary actors: <strong>Customer</strong> (registers, logs in, searches, books, pays) and <strong>Administrator</strong> (manages flights, planes, and schedules). Search for flights and planes is explicitly activated for both.</p>
+
+<div class="diagram-box no-break">
+<svg width="680" height="850" viewBox="0 0 680 860" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="dh2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<!-- System boundary -->
+<rect x="130" y="20" width="530" height="820" rx="12" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="8 4"/>
+<text x="395" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#333" font-family="Arial">Airline Reservation System</text>
+
+<!-- Actor: Customer -->
+<ellipse cx="55" cy="200" rx="16" ry="16" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="55" y1="216" x2="55" y2="250" stroke="#333" stroke-width="1"/>
+<line x1="38" y1="232" x2="72" y2="232" stroke="#333" stroke-width="1"/>
+<line x1="55" y1="250" x2="40" y2="272" stroke="#333" stroke-width="1"/>
+<line x1="55" y1="250" x2="70" y2="272" stroke="#333" stroke-width="1"/>
+<text x="55" y="288" text-anchor="middle" font-size="11" fill="#333" font-family="Arial">Customer</text>
+
+<!-- Actor: Admin -->
+<ellipse cx="55" cy="590" rx="16" ry="16" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="55" y1="606" x2="55" y2="640" stroke="#333" stroke-width="1"/>
+<line x1="38" y1="620" x2="72" y2="620" stroke="#333" stroke-width="1"/>
+<line x1="55" y1="640" x2="40" y2="662" stroke="#333" stroke-width="1"/>
+<line x1="55" y1="640" x2="70" y2="662" stroke="#333" stroke-width="1"/>
+<text x="55" y="678" text-anchor="middle" font-size="11" fill="#333" font-family="Arial">Admin</text>
+
+<!-- Customer use cases - teal -->
+<ellipse cx="290" cy="80" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="290" y="84" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Register</text>
+<ellipse cx="290" cy="150" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="290" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Log in</text>
+<ellipse cx="290" cy="220" rx="115" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="290" y="224" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Choose destination</text>
+<ellipse cx="290" cy="290" rx="110" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="290" y="294" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Select flight schedule</text>
+<ellipse cx="290" cy="360" rx="120" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="290" y="364" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Select departure time</text>
+<ellipse cx="290" cy="430" rx="110" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="290" y="434" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Pay flight cost</text>
+
+<!-- Outcome use cases -->
+<ellipse cx="530" cy="430" rx="115" ry="24" fill="#faeeda" stroke="#854f0b" stroke-width="0.8"/>
+<text x="530" y="434" text-anchor="middle" font-size="11" font-weight="bold" fill="#412402" font-family="Arial">Confirm reservation</text>
+<ellipse cx="530" cy="500" rx="115" ry="24" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+<text x="530" y="504" text-anchor="middle" font-size="11" font-weight="bold" fill="#4a1b0c" font-family="Arial">Cancel reservation</text>
+
+<!-- Search (blue) -->
+<ellipse cx="530" cy="290" rx="100" ry="24" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+<text x="530" y="294" text-anchor="middle" font-size="11" font-weight="bold" fill="#042c53" font-family="Arial">Search flights</text>
+<ellipse cx="530" cy="220" rx="100" ry="24" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+<text x="530" y="224" text-anchor="middle" font-size="11" font-weight="bold" fill="#042c53" font-family="Arial">Search planes</text>
+
+<!-- Admin use cases - purple -->
+<ellipse cx="290" cy="570" rx="100" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="290" y="574" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Add flight</text>
+<ellipse cx="290" cy="630" rx="100" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="290" y="634" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Remove flight</text>
+<ellipse cx="290" cy="690" rx="100" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="290" y="694" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Suspend flight</text>
+<ellipse cx="290" cy="750" rx="100" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="290" y="754" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Re-route flight</text>
+<ellipse cx="530" cy="570" rx="105" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="530" y="574" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Reschedule flight</text>
+<ellipse cx="530" cy="630" rx="95" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="530" y="634" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Add new plane</text>
+<ellipse cx="530" cy="690" rx="95" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="530" y="694" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Remove plane</text>
+<ellipse cx="530" cy="750" rx="110" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="530" y="754" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Add departure time</text>
+
+<!-- Customer associations -->
+<line x1="71" y1="194" x2="188" y2="82" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="198" x2="188" y2="150" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="204" x2="173" y2="220" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="210" x2="178" y2="290" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="218" x2="168" y2="358" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="224" x2="178" y2="428" stroke="#aaa" stroke-width="0.7"/>
+
+<!-- Admin associations -->
+<line x1="71" y1="586" x2="188" y2="572" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="592" x2="188" y2="630" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="598" x2="188" y2="690" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="604" x2="188" y2="750" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="584" x2="423" y2="572" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="592" x2="433" y2="630" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="600" x2="433" y2="690" stroke="#aaa" stroke-width="0.7"/>
+<line x1="71" y1="610" x2="418" y2="750" stroke="#aaa" stroke-width="0.7"/>
+
+<!-- include/extend -->
+<path d="M400 430 L413 430" fill="none" stroke="#555" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#dh2)"/>
+<text x="407" y="422" text-anchor="middle" font-size="9" fill="#555" font-family="Arial">«include»</text>
+<path d="M400 440 L413 498" fill="none" stroke="#555" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#dh2)"/>
+<text x="424" y="462" font-size="9" fill="#555" font-family="Arial">«extend»</text>
+<text x="424" y="474" font-size="9" fill="#888" font-family="Arial">(payment fails)</text>
+<path d="M290 104 L290 124" fill="none" stroke="#555" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#dh2)"/>
+<text x="304" y="118" font-size="9" fill="#555" font-family="Arial">«include»</text>
+</svg>
+<div class="diagram-caption">Figure 2.1 — Airline reservation system use case diagram</div>
+</div>
+
+<div class="sub-q">ii. Class Diagram</div>
+<p>Key classes identified: <strong>Customer</strong>, <strong>Reservation</strong>, <strong>Payment</strong>, <strong>Flight</strong>, <strong>Schedule</strong>, <strong>Destination</strong>, <strong>Aeroplane</strong>, and <strong>Admin</strong>.</p>
+
+<div class="diagram-box no-break">
+<svg width="680" height="810" viewBox="0 0 680 820" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<!-- Customer -->
+<rect x="10" y="10" width="190" height="168" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="10" y="10" width="190" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="105" y="28" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Customer</text>
+<line x1="10" y1="38" x2="200" y2="38" stroke="#aaa" stroke-width="0.5"/>
+<text x="18" y="56" font-size="10" fill="#444" font-family="Arial">- customerID: String</text>
+<text x="18" y="72" font-size="10" fill="#444" font-family="Arial">- firstName: String</text>
+<text x="18" y="88" font-size="10" fill="#444" font-family="Arial">- lastName: String</text>
+<text x="18" y="104" font-size="10" fill="#444" font-family="Arial">- dateOfBirth: Date</text>
+<text x="18" y="120" font-size="10" fill="#444" font-family="Arial">- dateRegistered: Date</text>
+<line x1="10" y1="128" x2="200" y2="128" stroke="#aaa" stroke-width="0.5"/>
+<text x="18" y="144" font-size="10" fill="#444" font-family="Arial">+ register(): void</text>
+<text x="18" y="160" font-size="10" fill="#444" font-family="Arial">+ login(): void</text>
+<text x="18" y="176" font-size="10" fill="#444" font-family="Arial">+ makeReservation(): void</text>
+
+<!-- Reservation -->
+<rect x="230" y="10" width="195" height="170" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="230" y="10" width="195" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="327" y="28" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Reservation</text>
+<line x1="230" y1="38" x2="425" y2="38" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="56" font-size="10" fill="#444" font-family="Arial">- reservationID: String</text>
+<text x="238" y="72" font-size="10" fill="#444" font-family="Arial">- status: String</text>
+<text x="238" y="88" font-size="10" fill="#444" font-family="Arial">- dateCreated: Date</text>
+<text x="238" y="104" font-size="10" fill="#444" font-family="Arial">- totalCost: Double</text>
+<line x1="230" y1="112" x2="425" y2="112" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="128" font-size="10" fill="#444" font-family="Arial">+ confirmReservation(): void</text>
+<text x="238" y="144" font-size="10" fill="#444" font-family="Arial">+ cancelReservation(): void</text>
+<text x="238" y="160" font-size="10" fill="#444" font-family="Arial">+ getStatus(): String</text>
+<text x="238" y="176" font-size="10" fill="#444" font-family="Arial">+ generateReceipt(): void</text>
+
+<!-- Payment -->
+<rect x="455" y="10" width="210" height="150" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="455" y="10" width="210" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="560" y="28" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Payment</text>
+<line x1="455" y1="38" x2="665" y2="38" stroke="#aaa" stroke-width="0.5"/>
+<text x="463" y="56" font-size="10" fill="#444" font-family="Arial">- paymentID: String</text>
+<text x="463" y="72" font-size="10" fill="#444" font-family="Arial">- amount: Double</text>
+<text x="463" y="88" font-size="10" fill="#444" font-family="Arial">- paymentDate: Date</text>
+<text x="463" y="104" font-size="10" fill="#444" font-family="Arial">- method: String</text>
+<line x1="455" y1="112" x2="665" y2="112" stroke="#aaa" stroke-width="0.5"/>
+<text x="463" y="128" font-size="10" fill="#444" font-family="Arial">+ processPayment(): Boolean</text>
+<text x="463" y="144" font-size="10" fill="#444" font-family="Arial">+ refund(): void</text>
+<text x="463" y="160" font-size="10" fill="#444" font-family="Arial">+ getStatus(): String</text>
+
+<!-- Flight -->
+<rect x="10" y="280" width="190" height="168" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="10" y="280" width="190" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="105" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Flight</text>
+<line x1="10" y1="308" x2="200" y2="308" stroke="#aaa" stroke-width="0.5"/>
+<text x="18" y="326" font-size="10" fill="#444" font-family="Arial">- flightID: String</text>
+<text x="18" y="342" font-size="10" fill="#444" font-family="Arial">- flightNumber: String</text>
+<text x="18" y="358" font-size="10" fill="#444" font-family="Arial">- status: String</text>
+<text x="18" y="374" font-size="10" fill="#444" font-family="Arial">- route: String</text>
+<line x1="10" y1="382" x2="200" y2="382" stroke="#aaa" stroke-width="0.5"/>
+<text x="18" y="398" font-size="10" fill="#444" font-family="Arial">+ suspendFlight(): void</text>
+<text x="18" y="414" font-size="10" fill="#444" font-family="Arial">+ rerouteFlight(): void</text>
+<text x="18" y="430" font-size="10" fill="#444" font-family="Arial">+ reschedule(): void</text>
+<text x="18" y="446" font-size="10" fill="#444" font-family="Arial">+ searchFlight(): Flight</text>
+
+<!-- Schedule -->
+<rect x="230" y="280" width="195" height="152" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="230" y="280" width="195" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="327" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Schedule</text>
+<line x1="230" y1="308" x2="425" y2="308" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="326" font-size="10" fill="#444" font-family="Arial">- scheduleID: String</text>
+<text x="238" y="342" font-size="10" fill="#444" font-family="Arial">- departureTime: DateTime</text>
+<text x="238" y="358" font-size="10" fill="#444" font-family="Arial">- arrivalTime: DateTime</text>
+<text x="238" y="374" font-size="10" fill="#444" font-family="Arial">- travelDate: Date</text>
+<line x1="230" y1="382" x2="425" y2="382" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="398" font-size="10" fill="#444" font-family="Arial">+ getAvailableSlots(): List</text>
+<text x="238" y="414" font-size="10" fill="#444" font-family="Arial">+ addDeparture(): void</text>
+<text x="238" y="430" font-size="10" fill="#444" font-family="Arial">+ isAvailable(): Boolean</text>
+
+<!-- Destination -->
+<rect x="455" y="280" width="210" height="136" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="455" y="280" width="210" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="560" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Destination</text>
+<line x1="455" y1="308" x2="665" y2="308" stroke="#aaa" stroke-width="0.5"/>
+<text x="463" y="326" font-size="10" fill="#444" font-family="Arial">- destinationID: String</text>
+<text x="463" y="342" font-size="10" fill="#444" font-family="Arial">- cityName: String</text>
+<text x="463" y="358" font-size="10" fill="#444" font-family="Arial">- country: String</text>
+<text x="463" y="374" font-size="10" fill="#444" font-family="Arial">- airportCode: String</text>
+<line x1="455" y1="382" x2="665" y2="382" stroke="#aaa" stroke-width="0.5"/>
+<text x="463" y="398" font-size="10" fill="#444" font-family="Arial">+ getFlights(): List</text>
+<text x="463" y="414" font-size="10" fill="#444" font-family="Arial">+ search(): Destination</text>
+
+<!-- Aeroplane -->
+<rect x="10" y="550" width="190" height="152" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="10" y="550" width="190" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="105" y="568" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Aeroplane</text>
+<line x1="10" y1="578" x2="200" y2="578" stroke="#aaa" stroke-width="0.5"/>
+<text x="18" y="596" font-size="10" fill="#444" font-family="Arial">- planeID: String</text>
+<text x="18" y="612" font-size="10" fill="#444" font-family="Arial">- model: String</text>
+<text x="18" y="628" font-size="10" fill="#444" font-family="Arial">- capacity: Integer</text>
+<text x="18" y="644" font-size="10" fill="#444" font-family="Arial">- registrationNo: String</text>
+<line x1="10" y1="652" x2="200" y2="652" stroke="#aaa" stroke-width="0.5"/>
+<text x="18" y="668" font-size="10" fill="#444" font-family="Arial">+ searchPlane(): Aeroplane</text>
+<text x="18" y="684" font-size="10" fill="#444" font-family="Arial">+ getStatus(): String</text>
+
+<!-- Admin -->
+<rect x="230" y="550" width="195" height="152" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="230" y="550" width="195" height="28" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="327" y="568" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3a5f" font-family="Arial">Admin</text>
+<line x1="230" y1="578" x2="425" y2="578" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="596" font-size="10" fill="#444" font-family="Arial">- adminID: String</text>
+<text x="238" y="612" font-size="10" fill="#444" font-family="Arial">- username: String</text>
+<line x1="230" y1="620" x2="425" y2="620" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="636" font-size="10" fill="#444" font-family="Arial">+ addFlight(): void</text>
+<text x="238" y="652" font-size="10" fill="#444" font-family="Arial">+ removeFlight(): void</text>
+<text x="238" y="668" font-size="10" fill="#444" font-family="Arial">+ addPlane(): void</text>
+<text x="238" y="684" font-size="10" fill="#444" font-family="Arial">+ removePlane(): void</text>
+<text x="238" y="700" font-size="10" fill="#444" font-family="Arial">+ suspendFlight(): void</text>
+
+<!-- Relationships -->
+<path d="M200 94 L230 94" fill="none" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<text x="205" y="88" font-size="9" fill="#888" font-family="Arial">1</text><text x="222" y="88" font-size="9" fill="#888" font-family="Arial">1..*</text>
+<path d="M425 90 L455 90" fill="none" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<text x="428" y="84" font-size="9" fill="#888" font-family="Arial">1</text><text x="442" y="84" font-size="9" fill="#888" font-family="Arial">1</text>
+<path d="M327 180 L327 250 L105 250 L105 280" fill="none" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<path d="M327 180 L327 280" fill="none" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<path d="M200 350 L455 350" fill="none" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<text x="310" y="344" font-size="9" fill="#888" font-family="Arial">goes to</text>
+<path d="M105 448 L105 550" fill="none" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<path d="M327 550 L327 448" fill="none" stroke="#555" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#ah2)"/>
+<text x="332" y="506" font-size="9" fill="#888" font-family="Arial">manages</text>
+
+<!-- Legend -->
+<rect x="455" y="570" width="210" height="110" rx="4" fill="#fafafa" stroke="#ddd" stroke-width="0.5"/>
+<text x="560" y="588" text-anchor="middle" font-size="11" font-weight="bold" fill="#333" font-family="Arial">Legend</text>
+<line x1="468" y1="606" x2="503" y2="606" stroke="#555" stroke-width="0.8" marker-end="url(#ah2)"/>
+<text x="510" y="610" font-size="10" fill="#555" font-family="Arial">Association</text>
+<line x1="468" y1="626" x2="503" y2="626" stroke="#555" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#ah2)"/>
+<text x="510" y="630" font-size="10" fill="#555" font-family="Arial">Dependency</text>
+<text x="468" y="654" font-size="9" fill="#888" font-family="Arial">1, 1..* = multiplicity</text>
+</svg>
+<div class="diagram-caption">Figure 2.2 — Airline reservation system class diagram</div>
+</div>
+
+<!-- ==================== Q3 ==================== -->
+<div class="q-header">
+  <h2>Question 3 — UML and Use Case Diagram Notation</h2>
+</div>
+
+<p><strong>UML</strong> stands for <strong>Unified Modeling Language</strong> — a standardised visual language for specifying, visualising, constructing, and documenting software systems.</p>
+
+<div class="notation-grid">
+  <div class="notation-item"><strong>1. Actor</strong><span>A stick figure representing a person or external system that interacts with the system from outside its boundary.</span></div>
+  <div class="notation-item"><strong>2. Use case</strong><span>An oval/ellipse labelled with the name of a system function or user goal.</span></div>
+  <div class="notation-item"><strong>3. System boundary</strong><span>A rectangle (often dashed) enclosing all use cases belonging to the system, labelled with the system name.</span></div>
+  <div class="notation-item"><strong>4. Association</strong><span>A solid line connecting an actor to a use case, showing that the actor participates in that use case.</span></div>
+  <div class="notation-item"><strong>5. «include»</strong><span>A dashed arrow from a base use case to the included use case. The base always calls the included behaviour.</span></div>
+  <div class="notation-item"><strong>6. «extend»</strong><span>A dashed arrow from the extending use case to the base. The extension is conditional/optional.</span></div>
+  <div class="notation-item"><strong>7. Generalisation</strong><span>A solid line with a hollow triangle arrowhead. A child actor/use case inherits from the parent.</span></div>
+  <div class="notation-item"><strong>8. Note/Comment</strong><span>A dog-eared rectangle used to annotate elements with conditions, constraints, or explanatory text.</span></div>
+</div>
+
+<div class="diagram-box no-break">
+<svg width="680" height="480" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="dh3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="th3" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10Z" fill="white" stroke="#555" stroke-width="1.2"/>
+  </marker>
+</defs>
+<text x="340" y="24" text-anchor="middle" font-size="13" font-weight="bold" fill="#333" font-family="Arial">UML use case diagram — notation reference</text>
+
+<!-- Actor -->
+<text x="28" y="60" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">1. Actor</text>
+<ellipse cx="80" cy="102" rx="16" ry="16" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="80" y1="118" x2="80" y2="150" stroke="#333" stroke-width="1"/>
+<line x1="62" y1="132" x2="98" y2="132" stroke="#333" stroke-width="1"/>
+<line x1="80" y1="150" x2="64" y2="170" stroke="#333" stroke-width="1"/>
+<line x1="80" y1="150" x2="96" y2="170" stroke="#333" stroke-width="1"/>
+<text x="80" y="188" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">User</text>
+<text x="130" y="132" font-size="10" fill="#666" font-family="Arial">Person or external system</text>
+
+<!-- Use case -->
+<text x="28" y="216" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">2. Use case</text>
+<ellipse cx="110" cy="252" rx="70" ry="26" fill="#f0f4ff" stroke="#555" stroke-width="0.8"/>
+<text x="110" y="256" text-anchor="middle" font-size="11" font-weight="bold" fill="#333" font-family="Arial">Buy ticket</text>
+<text x="200" y="252" font-size="10" fill="#666" font-family="Arial">Oval labelled with the goal name</text>
+
+<!-- System boundary -->
+<text x="28" y="306" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">3. System boundary</text>
+<rect x="40" y="318" width="130" height="56" rx="6" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="6 3"/>
+<text x="105" y="350" text-anchor="middle" font-size="10" fill="#aaa" font-family="Arial">System name</text>
+<text x="200" y="350" font-size="10" fill="#666" font-family="Arial">Dashed rectangle — encloses all use cases</text>
+
+<!-- Association -->
+<text x="28" y="400" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">4. Association</text>
+<line x1="40" y1="424" x2="160" y2="424" stroke="#333" stroke-width="1"/>
+<text x="200" y="428" font-size="10" fill="#666" font-family="Arial">Solid line — actor participates in use case</text>
+
+<!-- Divider -->
+<line x1="340" y1="52" x2="340" y2="470" stroke="#e5e7eb" stroke-width="0.7" stroke-dasharray="4 4"/>
+
+<!-- Include -->
+<text x="350" y="60" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">5. «include»</text>
+<path d="M360 88 L480 88" fill="none" stroke="#555" stroke-width="0.9" stroke-dasharray="5 3" marker-end="url(#dh3)"/>
+<text x="420" y="80" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">«include»</text>
+<text x="350" y="108" font-size="10" fill="#666" font-family="Arial">Dashed arrow — base always calls included case</text>
+
+<!-- Extend -->
+<text x="350" y="144" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">6. «extend»</text>
+<path d="M480 168 L360 168" fill="none" stroke="#555" stroke-width="0.9" stroke-dasharray="5 3" marker-end="url(#dh3)"/>
+<text x="420" y="160" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">«extend»</text>
+<text x="350" y="188" font-size="10" fill="#666" font-family="Arial">Dashed arrow from extension to base; optional</text>
+
+<!-- Generalisation -->
+<text x="350" y="226" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">7. Generalisation</text>
+<path d="M360 250 L480 250" fill="none" stroke="#555" stroke-width="0.9" marker-end="url(#th3)"/>
+<text x="350" y="270" font-size="10" fill="#666" font-family="Arial">Solid line with hollow triangle — child inherits parent</text>
+
+<!-- Note -->
+<text x="350" y="306" font-size="11" font-weight="bold" fill="#2563eb" font-family="Arial">8. Note</text>
+<polygon points="355,322 440,322 440,362 351,362 351,326" fill="#fffde7" stroke="#aaa" stroke-width="0.8"/>
+<polygon points="434,322 440,322 440,328" fill="white" stroke="#aaa" stroke-width="0.8"/>
+<text x="393" y="345" text-anchor="middle" font-size="10" fill="#555" font-family="Arial">Note text</text>
+<text x="350" y="385" font-size="10" fill="#666" font-family="Arial">Dog-eared rectangle for annotations and constraints</text>
+</svg>
+<div class="diagram-caption">Figure 3.1 — UML use case diagram notation reference</div>
+</div>
+
+<!-- ==================== Q4 ==================== -->
+<div class="q-header">
+  <h2>Question 4 — Library Database: Noun-Phrase Object Identification</h2>
+</div>
+
+<p>The <strong>noun-phrase (natural language) approach</strong> involves reading the problem description and underlining all nouns and noun phrases. These become candidate objects. They are then filtered — removing duplicates, out-of-scope concepts, and attributes disguised as nouns.</p>
+
+<h3>Step 1 — Raw nouns extracted</h3>
+<p><em>Library database system, Biology department, College, Book, Media, Video, Secretary, Student, Faculty member, Checkout, System</em></p>
+
+<h3>Step 2 — Filtering</h3>
+<ul>
+  <li><em>Library database system</em> → the system itself; dropped as an object</li>
+  <li><em>Biology department / College</em> → context only; not modelled as classes</li>
+  <li><em>Video</em> → a type of Media; subsumed</li>
+</ul>
+
+<h3>Step 3 — Resulting classes and relationships</h3>
+<table>
+  <tr><th>Class</th><th>Key Attributes</th><th>Key Relationships</th></tr>
+  <tr><td>Item (Book / Media)</td><td>itemID, title, author, type, copyNo</td><td>Checked out via Checkout</td></tr>
+  <tr><td>Member (Student / Faculty)</td><td>memberID, name, type, department</td><td>Initiates Checkout; managed by Secretary</td></tr>
+  <tr><td>Secretary</td><td>staffID, name</td><td>Performs Checkout on behalf of Member</td></tr>
+  <tr><td>Checkout</td><td>checkoutID, dueDate, returnDate</td><td>Links Member to Item</td></tr>
+  <tr><td>Book</td><td>ISBN, publisher</td><td>Specialises Item</td></tr>
+  <tr><td>Media (Video)</td><td>format, duration</td><td>Specialises Item</td></tr>
+</table>
+
+<div class="info-box">
+  <strong>Relationships:</strong> Secretary <em>manages</em> Checkout; Checkout <em>involves</em> Member and Item; Student and FacultyMember <em>generalise</em> (inherit from) Member; Book and Video are types of Item (generalisation).
+</div>
+
+<!-- ==================== Q5 ==================== -->
+<div class="q-header">
+  <h2>Question 5 — Activity Models in OO Modelling</h2>
+</div>
+
+<p>An <strong>activity model</strong> (activity diagram) is a UML behavioural diagram that depicts the flow of activities — sequential and parallel — within a system or use case. It is similar to a flowchart but supports concurrent paths (fork/join bars), swim lanes (showing which actor does what), and decision points.</p>
+
+<h3>Why it is useful in OO modelling</h3>
+<ol>
+  <li><strong>Workflow clarity</strong> — shows the order of operations fulfilling a use case, bridging the gap between use case diagrams (what) and sequence diagrams (how).</li>
+  <li><strong>Parallel processing</strong> — fork and join nodes model concurrency that is hard to show in a sequence diagram.</li>
+  <li><strong>Swim lanes</strong> — partition responsibilities by actor or subsystem, making it clear who performs each activity.</li>
+  <li><strong>Input to class design</strong> — activities reveal the operations that classes must expose.</li>
+  <li><strong>Validation tool</strong> — stakeholders can walk through the diagram to confirm the modelled behaviour matches real-world expectations before any code is written.</li>
+</ol>
+
+<div class="info-box">Activity diagrams are most useful during <strong>requirements analysis and high-level design</strong>, complementing use case and class diagrams.</div>
+
+<!-- ==================== Q6 ==================== -->
+<div class="q-header">
+  <h2>Question 6 — ABC Corporation Employee Class Diagram</h2>
+</div>
+
+<div class="diagram-box no-break">
+<svg width="680" height="470" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="gen6" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10Z" fill="white" stroke="#555" stroke-width="1.2"/>
+  </marker>
+</defs>
+<!-- Employee superclass -->
+<rect x="215" y="20" width="250" height="242" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="215" y="20" width="250" height="30" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="340" y="39" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a5f" font-family="Arial">Employee</text>
+<line x1="215" y1="50" x2="465" y2="50" stroke="#aaa" stroke-width="0.5"/>
+<text x="226" y="68" font-size="10" fill="#444" font-family="Arial">- firstName: String</text>
+<text x="226" y="84" font-size="10" fill="#444" font-family="Arial">- lastName: String</text>
+<text x="226" y="100" font-size="10" fill="#444" font-family="Arial">- middleName: String</text>
+<text x="226" y="116" font-size="10" fill="#444" font-family="Arial">- gender: String</text>
+<text x="226" y="132" font-size="10" fill="#444" font-family="Arial">- homeAddress: String</text>
+<text x="226" y="148" font-size="10" fill="#444" font-family="Arial">- dateHired: Date</text>
+<text x="226" y="164" font-size="10" fill="#444" font-family="Arial">- birthDate: Date</text>
+<line x1="215" y1="172" x2="465" y2="172" stroke="#aaa" stroke-width="0.5"/>
+<text x="226" y="190" font-size="10" fill="#444" font-family="Arial">+ getFullName(): String</text>
+<text x="226" y="206" font-size="10" fill="#444" font-family="Arial">+ getAge(): Integer</text>
+<text x="226" y="222" font-size="10" fill="#444" font-family="Arial">+ calculatePay(): Double</text>
+<text x="226" y="244" font-size="10" fill="#888" font-family="Arial" font-style="italic">{abstract}</text>
+
+<!-- Generalisation lines -->
+<line x1="340" y1="262" x2="340" y2="310" stroke="#555" stroke-width="0.8"/>
+<line x1="130" y1="310" x2="550" y2="310" stroke="#555" stroke-width="0.8"/>
+<line x1="130" y1="310" x2="130" y2="340" stroke="#555" stroke-width="0.8" marker-end="url(#gen6)"/>
+<line x1="550" y1="310" x2="550" y2="340" stroke="#555" stroke-width="0.8" marker-end="url(#gen6)"/>
+
+<!-- SalariedEmployee -->
+<rect x="20" y="340" width="220" height="126" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="340" width="220" height="30" rx="4" fill="#dcfce7" stroke="#aaa" stroke-width="0.8"/>
+<text x="130" y="359" text-anchor="middle" font-size="12" font-weight="bold" fill="#14532d" font-family="Arial">SalariedEmployee</text>
+<line x1="20" y1="370" x2="240" y2="370" stroke="#aaa" stroke-width="0.5"/>
+<text x="30" y="388" font-size="10" fill="#444" font-family="Arial">- annualSalary: Double</text>
+<line x1="20" y1="396" x2="240" y2="396" stroke="#aaa" stroke-width="0.5"/>
+<text x="30" y="414" font-size="10" fill="#444" font-family="Arial">+ calculatePay(): Double</text>
+<text x="30" y="430" font-size="10" fill="#444" font-family="Arial">+ getMonthlySalary(): Double</text>
+<text x="30" y="446" font-size="10" fill="#444" font-family="Arial">+ getAnnualSalary(): Double</text>
+
+<!-- HourlyEmployee -->
+<rect x="440" y="340" width="220" height="126" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="440" y="340" width="220" height="30" rx="4" fill="#fef9c3" stroke="#aaa" stroke-width="0.8"/>
+<text x="550" y="359" text-anchor="middle" font-size="12" font-weight="bold" fill="#713f12" font-family="Arial">HourlyEmployee</text>
+<line x1="440" y1="370" x2="660" y2="370" stroke="#aaa" stroke-width="0.5"/>
+<text x="450" y="388" font-size="10" fill="#444" font-family="Arial">- hourlyRate: Double</text>
+<text x="450" y="404" font-size="10" fill="#444" font-family="Arial">- hoursWorked: Double</text>
+<line x1="440" y1="412" x2="660" y2="412" stroke="#aaa" stroke-width="0.5"/>
+<text x="450" y="430" font-size="10" fill="#444" font-family="Arial">+ calculatePay(): Double</text>
+<text x="450" y="446" font-size="10" fill="#444" font-family="Arial">+ logHours(h: Double): void</text>
+<text x="450" y="462" font-size="10" fill="#444" font-family="Arial">+ getHourlyRate(): Double</text>
+</svg>
+<div class="diagram-caption">Figure 6.1 — ABC Corporation employee class hierarchy</div>
+</div>
+
+<p><strong>Explanation:</strong> <code>Employee</code> is the abstract superclass holding all shared attributes. The hollow-triangle arrow denotes generalisation (inheritance). <code>SalariedEmployee</code> adds <code>annualSalary</code> and overrides <code>calculatePay()</code>. <code>HourlyEmployee</code> adds <code>hourlyRate</code> and <code>hoursWorked</code>, overriding <code>calculatePay()</code> as rate × hours. Polymorphism allows payroll to call <code>calculatePay()</code> on any Employee reference.</p>
+
+<!-- ==================== Q7 ==================== -->
+<div class="q-header">
+  <h2>Question 7 — Use Case, Actor, and Importance of Use Case Diagrams</h2>
+</div>
+
+<p>A <strong>use case</strong> describes a single goal that an actor can accomplish using the system — a complete sequence of interactions producing a result of value (e.g., "Purchase flight ticket").</p>
+
+<p>An <strong>actor</strong> is any entity — person, organisation, or external system — that interacts with the system from outside. Actors are not part of the system; they trigger use cases or receive results. A <em>primary actor</em> initiates the use case (e.g., Customer); a <em>secondary actor</em> supports it (e.g., Payment Gateway).</p>
+
+<h3>Why use case diagrams are important</h3>
+<ul>
+  <li>Express requirements in plain, stakeholder-friendly language</li>
+  <li>Define the system boundary — what is in scope versus out of scope</li>
+  <li>Serve as a contract between developers and clients before design begins</li>
+  <li>Drive test-case design: one test scenario per use case path</li>
+  <li>Identify the actors and thus the user groups whose needs must be satisfied</li>
+</ul>
+
+<div class="info-box"><strong>Stage of use:</strong> Use case diagrams are most valuable during the <strong>requirements analysis phase</strong> — the earliest stage. They capture <em>what</em> the system must do before any design decisions about <em>how</em> are made. They feed directly into class, sequence, and activity diagrams in subsequent phases.</div>
+
+<!-- ==================== Q8 ==================== -->
+<div class="q-header">
+  <h2>Question 8 — Sequence Diagram: Student Online Portal</h2>
+</div>
+
+<p>Objects involved: <strong>Student</strong>, <strong>Portal UI</strong>, <strong>Auth Service</strong>, <strong>Database</strong>. Solid arrows = calls; dashed arrows = return messages.</p>
+
+<div class="diagram-box no-break">
+<svg width="680" height="580" viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ah8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="ret8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<!-- Object boxes -->
+<rect x="20" y="20" width="90" height="36" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="65" y="42" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Student</text>
+<rect x="180" y="20" width="100" height="36" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="230" y="42" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Portal UI</text>
+<rect x="350" y="20" width="110" height="36" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="405" y="42" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Auth Service</text>
+<rect x="530" y="20" width="110" height="36" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="585" y="42" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Database</text>
+<!-- Lifelines -->
+<line x1="65" y1="56" x2="65" y2="580" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6 4"/>
+<line x1="230" y1="56" x2="230" y2="580" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6 4"/>
+<line x1="405" y1="56" x2="405" y2="580" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6 4"/>
+<line x1="585" y1="56" x2="585" y2="580" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6 4"/>
+<!-- Activation boxes -->
+<rect x="61" y="88" width="8" height="462" rx="1" fill="#bfdbfe"/>
+<rect x="226" y="108" width="8" height="442" rx="1" fill="#bfdbfe"/>
+<rect x="401" y="128" width="8" height="80" rx="1" fill="#bfdbfe"/>
+<rect x="581" y="146" width="8" height="46" rx="1" fill="#bfdbfe"/>
+<!-- Messages -->
+<line x1="69" y1="98" x2="226" y2="98" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="148" y="92" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">1: login(studentID, password)</text>
+<line x1="234" y1="128" x2="401" y2="128" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="318" y="122" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">2: validateCredentials()</text>
+<line x1="405" y1="148" x2="581" y2="148" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="494" y="142" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">3: queryStudent(ID)</text>
+<line x1="581" y1="173" x2="409" y2="173" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="494" y="167" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">4: studentRecord</text>
+<line x1="401" y1="198" x2="234" y2="198" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="318" y="192" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">5: authToken / denied</text>
+<line x1="226" y1="228" x2="69" y2="228" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="148" y="222" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">6: show dashboard</text>
+<!-- Fee balance -->
+<text x="360" y="256" text-anchor="middle" font-size="9" fill="#aaa" font-family="Arial">— check fee balance —</text>
+<line x1="69" y1="270" x2="226" y2="270" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="148" y="264" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">7: requestFeeBalance()</text>
+<rect x="581" y="280" width="8" height="36" rx="1" fill="#bfdbfe"/>
+<line x1="234" y1="282" x2="581" y2="282" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="408" y="276" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">8: fetchBalance(studentID)</text>
+<line x1="581" y1="306" x2="234" y2="306" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="408" y="300" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">9: balanceAmount</text>
+<line x1="226" y1="326" x2="69" y2="326" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="148" y="320" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">10: display balance</text>
+<!-- Fee statement -->
+<text x="360" y="354" text-anchor="middle" font-size="9" fill="#aaa" font-family="Arial">— generate fee statement —</text>
+<line x1="69" y1="368" x2="226" y2="368" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="148" y="362" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">11: generateStatement()</text>
+<rect x="581" y="378" width="8" height="36" rx="1" fill="#bfdbfe"/>
+<line x1="234" y1="380" x2="581" y2="380" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="408" y="374" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">12: fetchTransactions(ID)</text>
+<line x1="581" y1="404" x2="234" y2="404" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="408" y="398" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">13: transactionList</text>
+<line x1="226" y1="424" x2="69" y2="424" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="148" y="418" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">14: PDF statement</text>
+<!-- Check result -->
+<text x="360" y="452" text-anchor="middle" font-size="9" fill="#aaa" font-family="Arial">— check result —</text>
+<line x1="69" y1="466" x2="226" y2="466" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="148" y="460" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">15: checkResult()</text>
+<rect x="581" y="476" width="8" height="36" rx="1" fill="#bfdbfe"/>
+<line x1="234" y1="478" x2="581" y2="478" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="408" y="472" text-anchor="middle" font-size="9" fill="#333" font-family="Arial">16: fetchResults(ID)</text>
+<line x1="581" y1="502" x2="234" y2="502" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="408" y="496" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">17: examResults</text>
+<line x1="226" y1="522" x2="69" y2="522" stroke="#aaa" stroke-width="0.8" stroke-dasharray="5 3" marker-end="url(#ret8)"/>
+<text x="148" y="516" text-anchor="middle" font-size="9" fill="#888" font-family="Arial">18: display results</text>
+<!-- Legend -->
+<line x1="40" y1="558" x2="90" y2="558" stroke="#555" stroke-width="0.8" marker-end="url(#ah8)"/>
+<text x="98" y="562" font-size="9" fill="#555" font-family="Arial">call message</text>
+<line x1="180" y1="558" x2="230" y2="558" stroke="#aaa" stroke-dasharray="5 3" stroke-width="0.8" marker-end="url(#ret8)"/>
+<text x="238" y="562" font-size="9" fill="#888" font-family="Arial">return message</text>
+</svg>
+<div class="diagram-caption">Figure 8.1 — Student portal sequence diagram</div>
+</div>
+
+<!-- ==================== Q9 ==================== -->
+<div class="q-header">
+  <h2>Question 9 — Restaurant Use Case Diagram</h2>
+</div>
+
+<div class="diagram-box no-break">
+<svg width="680" height="460" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="dh9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<!-- System boundary -->
+<rect x="130" y="20" width="420" height="440" rx="12" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="7 4"/>
+<text x="340" y="44" text-anchor="middle" font-size="13" font-weight="bold" fill="#333" font-family="Arial">Restaurant System</text>
+
+<!-- Actor: Customer -->
+<ellipse cx="50" cy="200" rx="15" ry="15" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="50" y1="215" x2="50" y2="246" stroke="#333" stroke-width="1"/>
+<line x1="34" y1="228" x2="66" y2="228" stroke="#333" stroke-width="1"/>
+<line x1="50" y1="246" x2="36" y2="265" stroke="#333" stroke-width="1"/>
+<line x1="50" y1="246" x2="64" y2="265" stroke="#333" stroke-width="1"/>
+<text x="50" y="280" text-anchor="middle" font-size="11" fill="#333" font-family="Arial">Customer</text>
+
+<!-- Actor: Waiter -->
+<ellipse cx="630" cy="200" rx="15" ry="15" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="630" y1="215" x2="630" y2="246" stroke="#333" stroke-width="1"/>
+<line x1="614" y1="228" x2="646" y2="228" stroke="#333" stroke-width="1"/>
+<line x1="630" y1="246" x2="616" y2="265" stroke="#333" stroke-width="1"/>
+<line x1="630" y1="246" x2="644" y2="265" stroke="#333" stroke-width="1"/>
+<text x="630" y="280" text-anchor="middle" font-size="11" fill="#333" font-family="Arial">Waiter</text>
+
+<!-- Actor: Chef -->
+<ellipse cx="630" cy="80" rx="15" ry="15" fill="none" stroke="#333" stroke-width="1"/>
+<line x1="630" y1="95" x2="630" y2="126" stroke="#333" stroke-width="1"/>
+<line x1="614" y1="108" x2="646" y2="108" stroke="#333" stroke-width="1"/>
+<line x1="630" y1="126" x2="616" y2="145" stroke="#333" stroke-width="1"/>
+<line x1="630" y1="126" x2="644" y2="145" stroke="#333" stroke-width="1"/>
+<text x="630" y="160" text-anchor="middle" font-size="11" fill="#333" font-family="Arial">Chef</text>
+
+<!-- Customer use cases - teal -->
+<ellipse cx="280" cy="90" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="280" y="94" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Browse menu</text>
+<ellipse cx="280" cy="160" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="280" y="164" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Order food</text>
+<ellipse cx="280" cy="230" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="280" y="234" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Consume food</text>
+<ellipse cx="280" cy="300" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="280" y="304" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Order bill</text>
+<ellipse cx="280" cy="370" rx="100" ry="24" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+<text x="280" y="374" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041" font-family="Arial">Pay bill</text>
+
+<!-- Waiter use cases - amber -->
+<ellipse cx="460" cy="160" rx="105" ry="24" fill="#faeeda" stroke="#854f0b" stroke-width="0.8"/>
+<text x="460" y="164" text-anchor="middle" font-size="11" font-weight="bold" fill="#412402" font-family="Arial">Take customer order</text>
+<ellipse cx="460" cy="240" rx="100" ry="24" fill="#faeeda" stroke="#854f0b" stroke-width="0.8"/>
+<text x="460" y="244" text-anchor="middle" font-size="11" font-weight="bold" fill="#412402" font-family="Arial">Prepare meal/serve</text>
+<ellipse cx="460" cy="320" rx="110" ry="24" fill="#faeeda" stroke="#854f0b" stroke-width="0.8"/>
+<text x="460" y="324" text-anchor="middle" font-size="11" font-weight="bold" fill="#412402" font-family="Arial">Process payment</text>
+
+<!-- Chef use cases - purple -->
+<ellipse cx="460" cy="80" rx="100" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="460" y="84" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Order kitchen food</text>
+<ellipse cx="460" cy="420" rx="100" ry="24" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+<text x="460" y="424" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Washing up</text>
+
+<!-- Customer associations -->
+<line x1="65" y1="194" x2="178" y2="94" stroke="#aaa" stroke-width="0.7"/>
+<line x1="65" y1="198" x2="178" y2="160" stroke="#aaa" stroke-width="0.7"/>
+<line x1="65" y1="202" x2="178" y2="230" stroke="#aaa" stroke-width="0.7"/>
+<line x1="65" y1="206" x2="178" y2="300" stroke="#aaa" stroke-width="0.7"/>
+<line x1="65" y1="210" x2="178" y2="368" stroke="#aaa" stroke-width="0.7"/>
+
+<!-- Waiter associations -->
+<line x1="615" y1="194" x2="566" y2="162" stroke="#aaa" stroke-width="0.7"/>
+<line x1="615" y1="200" x2="562" y2="240" stroke="#aaa" stroke-width="0.7"/>
+<line x1="615" y1="206" x2="572" y2="320" stroke="#aaa" stroke-width="0.7"/>
+
+<!-- Chef associations -->
+<line x1="615" y1="80" x2="562" y2="80" stroke="#aaa" stroke-width="0.7"/>
+<line x1="615" y1="90" x2="562" y2="418" stroke="#aaa" stroke-width="0.7"/>
+
+<!-- include relationships -->
+<path d="M380 160 L354 160" fill="none" stroke="#555" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#dh9)"/>
+<text x="367" y="152" text-anchor="middle" font-size="9" fill="#555" font-family="Arial">«include»</text>
+<path d="M380 370 L337 320" fill="none" stroke="#555" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#dh9)"/>
+<text x="362" y="348" font-size="9" fill="#555" font-family="Arial">«include»</text>
+</svg>
+<div class="diagram-caption">Figure 9.1 — Restaurant use case diagram</div>
+</div>
+
+<!-- ==================== Q10–Q15 ==================== -->
+<div class="q-header">
+  <h2>Question 10 — Why Objects Are the Key Concept in OO Development</h2>
+</div>
+
+<p>Objects are the key concept because they mirror the way we naturally understand the real world — as distinct things with <strong>state</strong> (what they know) and <strong>behaviour</strong> (what they can do). This correspondence reduces the conceptual gap between the problem and the software solution.</p>
+<ul>
+  <li><strong>Encapsulation</strong> — each object bundles data and methods together, reducing coupling.</li>
+  <li><strong>Reusability</strong> — a well-designed class can be reused across multiple projects.</li>
+  <li><strong>Modularity</strong> — a system of cooperating objects is naturally modular; changing one object's implementation does not break others if the interface is preserved.</li>
+  <li><strong>Extensibility</strong> — inheritance lets new objects extend existing ones without rewriting them.</li>
+  <li><strong>Naturalness</strong> — mapping real-world entities (Customer, Flight, Book) directly to objects makes code self-documenting and intuitive.</li>
+</ul>
+
+<div class="q-header">
+  <h2>Question 11 — OO vs Procedural Approach</h2>
+</div>
+<table>
+  <tr><th>Dimension</th><th>Object-Oriented</th><th>Procedural</th></tr>
+  <tr><td>Core unit</td><td>Object (data + behaviour together)</td><td>Function / procedure (behaviour only)</td></tr>
+  <tr><td>Data handling</td><td>Encapsulated inside objects; private by default</td><td>Shared global or passed between functions</td></tr>
+  <tr><td>Program structure</td><td>Hierarchy of interacting objects</td><td>Sequence of function calls</td></tr>
+  <tr><td>Code reuse</td><td>Inheritance and composition</td><td>Code duplication or library functions</td></tr>
+  <tr><td>Modification risk</td><td>Changes contained within an object</td><td>Changes to shared data ripple everywhere</td></tr>
+  <tr><td>Modelling fit</td><td>Maps naturally to real-world entities</td><td>Suits mathematical or sequential algorithms</td></tr>
+  <tr><td>Examples</td><td>Java, Python, C++</td><td>C, Pascal, FORTRAN</td></tr>
+</table>
+
+<div class="q-header">
+  <h2>Question 12 — OO Analysis vs OO Design</h2>
+</div>
+<p><strong>Object-Oriented Analysis (OOA)</strong> focuses on <em>understanding the problem domain</em> — identifying what the system must do, the real-world objects involved, and their relationships. The output is a conceptual model independent of any implementation technology. Key questions: <em>What objects exist? What do they know? What can they do?</em></p>
+<p><strong>Object-Oriented Design (OOD)</strong> focuses on <em>planning the solution</em> — deciding how the system will be built. It adds technical decisions: design patterns, class-to-database mappings, interface design, memory management, and concurrency. Key questions: <em>How will objects collaborate? What classes and interfaces are needed?</em></p>
+<div class="info-box">The fundamental difference: analysis is <strong>problem-space</strong> thinking (technology-agnostic); design is <strong>solution-space</strong> thinking (technology-specific).</div>
+
+<div class="q-header">
+  <h2>Question 13 — Four Reasons for Building Models</h2>
+</div>
+<ol>
+  <li><strong>Communication</strong> — models give developers, stakeholders, and clients a shared visual language. A class diagram communicates structure far more efficiently than prose.</li>
+  <li><strong>Complexity management</strong> — software systems are too complex to hold in one person's head. Models let you view the system at different levels of abstraction.</li>
+  <li><strong>Validation before coding</strong> — errors caught in a model cost a fraction of errors caught in code. A missing return message in a sequence diagram prevents a bug in production.</li>
+  <li><strong>Documentation and maintenance</strong> — models serve as living documentation. Diagrams explain design intent that code alone rarely conveys.</li>
+</ol>
+
+<div class="q-header">
+  <h2>Question 14 — Key OO Distinctions</h2>
+</div>
+
+<div class="sub-q">a. Encapsulation vs Data Abstraction</div>
+<p><strong>Encapsulation</strong> is the mechanism of bundling data (fields) and the methods that operate on that data into a single unit (a class) and restricting direct external access via access modifiers (<code>private</code>, <code>protected</code>). It is about <em>protection and bundling</em>.</p>
+<p><strong>Data abstraction</strong> is the principle of exposing only the essential characteristics of an object while hiding unnecessary implementation detail, achieved through interfaces and abstract classes. It is about <em>simplification and hiding complexity</em>. In short: encapsulation <em>hides data</em>; abstraction <em>hides implementation</em>.</p>
+
+<div class="sub-q">b. Class vs Object</div>
+<p>A <strong>class</strong> is a blueprint or template — it defines the attributes and methods that its instances will have. It exists in code but not in memory at runtime (until instantiated). An <strong>object</strong> is a specific instance of a class — a concrete entity with its own attribute values, occupying memory at runtime. For example, <code>Flight</code> is the class; KQ101 departing on 25 May 2026 is an object.</p>
+
+<div class="sub-q">c. Method Overloading vs Method Overriding</div>
+<p><strong>Method overloading</strong> (compile-time polymorphism) — multiple methods with the same name in the same class but with different parameter lists. The compiler resolves which method to call based on arguments supplied.</p>
+<p><strong>Method overriding</strong> (runtime polymorphism) — a subclass provides its own implementation of a method already defined in the superclass, with the same name and signature. The decision of which method runs is made at runtime based on the actual object type.</p>
+
+<div class="q-header">
+  <h2>Question 15 — Natural Language Approach to Identifying Objects</h2>
+</div>
+<p>The natural language (noun-phrase) approach involves the following steps:</p>
+<ol>
+  <li><strong>Gather a textual description</strong> of the problem domain — a problem statement or requirements document in plain English.</li>
+  <li><strong>Identify all nouns and noun phrases</strong> — underline every noun. These are candidate objects or attributes.</li>
+  <li><strong>Identify verbs</strong> — these become candidate operations or methods.</li>
+  <li><strong>Apply filters</strong> to remove: redundant nouns (synonyms), irrelevant nouns (outside system scope), attributes masquerading as nouns, implementation constructs (database, file), and roles.</li>
+  <li><strong>What remains</strong> — nouns that are clearly distinct, relevant to the domain, and have both data and behaviour — become the object classes.</li>
+</ol>
+<div class="warn-box"><strong>Strengths:</strong> Intuitive, requires no special notation, produces results stakeholders can review.<br><strong>Weaknesses:</strong> English is ambiguous — different analysts may identify different objects. Best used as a starting point rather than a definitive method.</div>
+
+<!-- ==================== Q16 ==================== -->
+<div class="q-header">
+  <h2>Question 16 — Composition vs Aggregation &amp; Generalisation vs Association</h2>
+</div>
+
+<div class="sub-q">a. Composition vs Aggregation</div>
+
+<div class="diagram-box no-break">
+<svg width="680" height="320" viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg">
+<!-- Composition side -->
+<text x="165" y="22" text-anchor="middle" font-size="12" font-weight="bold" fill="#333" font-family="Arial">Composition (strong ownership)</text>
+<text x="165" y="40" text-anchor="middle" font-size="10" fill="#888" font-family="Arial">Part cannot exist without the whole</text>
+<!-- House -->
+<rect x="20" y="54" width="130" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="54" width="130" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="85" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">House</text>
+<line x1="20" y1="80" x2="150" y2="80" stroke="#aaa" stroke-width="0.5"/>
+<text x="28" y="96" font-size="9" fill="#444" font-family="Arial">- address: String</text>
+<text x="28" y="112" font-size="9" fill="#444" font-family="Arial">- floors: Integer</text>
+<!-- Filled diamond -->
+<path d="M150 88 L163 81 L176 88 L163 95 Z" fill="#555" stroke="#555" stroke-width="0.5"/>
+<line x1="176" y1="88" x2="185" y2="88" stroke="#555" stroke-width="0.8"/>
+<text x="154" y="78" font-size="9" fill="#888" font-family="Arial">1</text>
+<text x="179" y="78" font-size="9" fill="#888" font-family="Arial">1..*</text>
+<!-- Room -->
+<rect x="185" y="54" width="130" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="185" y="54" width="130" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="250" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Room</text>
+<line x1="185" y1="80" x2="315" y2="80" stroke="#aaa" stroke-width="0.5"/>
+<text x="193" y="96" font-size="9" fill="#444" font-family="Arial">- roomType: String</text>
+<text x="193" y="112" font-size="9" fill="#444" font-family="Arial">- area: Double</text>
+<!-- Explanation -->
+<rect x="20" y="138" width="295" height="60" rx="6" fill="#f0f4ff" stroke="#ddd" stroke-width="0.5"/>
+<text x="167" y="158" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">Rooms belong exclusively to one House.</text>
+<text x="167" y="174" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">If the House is demolished, all Rooms cease</text>
+<text x="167" y="190" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">to exist — they share its lifetime.</text>
+<!-- Key -->
+<path d="M30" y="226" font-size="0"/>
+<path d="M28 226 L40 220 L52 226 L40 232 Z" fill="#555"/>
+<line x1="52" y1="226" x2="72" y2="226" stroke="#555" stroke-width="0.8"/>
+<text x="78" y="230" font-size="10" fill="#555" font-family="Arial">Filled diamond = composition</text>
+
+<!-- Aggregation side -->
+<text x="510" y="22" text-anchor="middle" font-size="12" font-weight="bold" fill="#333" font-family="Arial">Aggregation (weak ownership)</text>
+<text x="510" y="40" text-anchor="middle" font-size="10" fill="#888" font-family="Arial">Part can exist independently of the whole</text>
+<!-- Team -->
+<rect x="365" y="54" width="130" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="365" y="54" width="130" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="430" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Team</text>
+<line x1="365" y1="80" x2="495" y2="80" stroke="#aaa" stroke-width="0.5"/>
+<text x="373" y="96" font-size="9" fill="#444" font-family="Arial">- teamName: String</text>
+<text x="373" y="112" font-size="9" fill="#444" font-family="Arial">- project: String</text>
+<!-- Hollow diamond -->
+<path d="M495 88 L508 81 L521 88 L508 95 Z" fill="white" stroke="#555" stroke-width="0.8"/>
+<line x1="521" y1="88" x2="530" y2="88" stroke="#555" stroke-width="0.8"/>
+<text x="498" y="78" font-size="9" fill="#888" font-family="Arial">1</text>
+<text x="524" y="78" font-size="9" fill="#888" font-family="Arial">0..*</text>
+<!-- Player -->
+<rect x="530" y="54" width="130" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="530" y="54" width="130" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="595" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Player</text>
+<line x1="530" y1="80" x2="660" y2="80" stroke="#aaa" stroke-width="0.5"/>
+<text x="538" y="96" font-size="9" fill="#444" font-family="Arial">- name: String</text>
+<text x="538" y="112" font-size="9" fill="#444" font-family="Arial">- position: String</text>
+<!-- Explanation -->
+<rect x="365" y="138" width="295" height="60" rx="6" fill="#fff9f0" stroke="#ddd" stroke-width="0.5"/>
+<text x="512" y="158" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">Players belong to a Team but can exist</text>
+<text x="512" y="174" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">without one. Dissolving the Team doesn't</text>
+<text x="512" y="190" text-anchor="middle" font-size="10" fill="#333" font-family="Arial">delete the Players.</text>
+<!-- Key -->
+<path d="M373 226 L385 220 L397 226 L385 232 Z" fill="white" stroke="#555" stroke-width="0.8"/>
+<line x1="397" y1="226" x2="417" y2="226" stroke="#555" stroke-width="0.8"/>
+<text x="423" y="230" font-size="10" fill="#555" font-family="Arial">Hollow diamond = aggregation</text>
+
+<!-- Divider -->
+<line x1="340" y1="16" x2="340" y2="260" stroke="#e5e7eb" stroke-width="0.7" stroke-dasharray="4 4"/>
+</svg>
+<div class="diagram-caption">Figure 16.1 — Composition (filled diamond) vs Aggregation (hollow diamond)</div>
+</div>
+
+<table>
+  <tr><th>Dimension</th><th>Composition</th><th>Aggregation</th></tr>
+  <tr><td>Ownership</td><td>Strong — whole owns the part exclusively</td><td>Weak — whole uses the part</td></tr>
+  <tr><td>Lifetime</td><td>Part is destroyed when whole is destroyed</td><td>Part survives destruction of the whole</td></tr>
+  <tr><td>Exclusivity</td><td>Part belongs to exactly one whole</td><td>Part can belong to multiple wholes</td></tr>
+  <tr><td>UML notation</td><td>Filled diamond on the whole end</td><td>Hollow diamond on the whole end</td></tr>
+  <tr><td>Example</td><td>House ◆── Room</td><td>Team ◇── Player</td></tr>
+</table>
+
+<div class="sub-q">b. Generalisation vs Association</div>
+<table>
+  <tr><th>Dimension</th><th>Generalisation</th><th>Association</th></tr>
+  <tr><td>Relationship type</td><td>"is-a"</td><td>"uses-a" / "has-a"</td></tr>
+  <tr><td>Hierarchy</td><td>Parent–child (superclass–subclass)</td><td>Peer-level; neither is a subtype of the other</td></tr>
+  <tr><td>Inheritance</td><td>Child inherits all attributes and operations</td><td>No attribute or operation inheritance</td></tr>
+  <tr><td>UML notation</td><td>Solid line with hollow triangle arrow pointing to parent</td><td>Plain solid line, optional label and multiplicity</td></tr>
+  <tr><td>Example</td><td>Dog is an Animal</td><td>Student enrols in Course</td></tr>
+</table>
+
+<!-- ==================== Q17 ==================== -->
+<div class="q-header">
+  <h2>Question 17 — Two Types of Association Relationships</h2>
+</div>
+
+<div class="key-diff no-break">
+  <div class="kd-col">
+    <h4>1. Unidirectional Association</h4>
+    <p>One class knows about and uses the other, but not vice versa. Navigation goes in one direction only, shown by an arrowhead on one end.</p>
+    <p><strong>Example:</strong> A <code>Customer</code> places a <code>Reservation</code>. Customer holds a reference to Reservation to check booking status, but a Reservation does not need a reference back to the Customer. Arrow: Customer → Reservation.</p>
+    <p>Limits coupling — the Reservation class remains reusable without being tied to any particular Customer implementation.</p>
+  </div>
+  <div class="kd-col">
+    <h4>2. Bidirectional Association</h4>
+    <p>Both classes know about and can navigate to each other. Represented by a plain line with no arrowhead (or arrowheads on both ends).</p>
+    <p><strong>Example:</strong> A <code>Doctor</code> treats a <code>Patient</code>, and a <code>Patient</code> is treated by a <code>Doctor</code>. Both classes hold references to each other because the system must answer: "Which patients does this doctor treat?" <em>and</em> "Which doctor is treating this patient?"</p>
+    <p>More common in domain models but increases coupling — reduce to unidirectional wherever only one direction of navigation is actually needed.</p>
+  </div>
+</div>
+
+<!-- ==================== Q18 ==================== -->
+<div class="q-header">
+  <h2>Question 18 — Classes and Relationships from Statements i–v</h2>
+</div>
+
+<table>
+  <tr><th>Statement</th><th>Classes Identified</th><th>Relationship Type</th><th>Explanation</th></tr>
+  <tr><td>i. Airline company has employees</td><td>AirlineCompany, Employee</td><td>Aggregation</td><td>Employees belong to the company but can exist independently (e.g. hired elsewhere)</td></tr>
+  <tr><td>ii. Team builds an aeroplane which has components</td><td>Team, Aeroplane, Component</td><td>Association (builds); Composition (has components)</td><td>Components are integral to the aeroplane and cannot exist without it; Team merely builds it</td></tr>
+  <tr><td>iii. Aeroplane lands/takes off from a strip in an airport</td><td>Airport, Strip (Runway), Aeroplane</td><td>Composition (airport has strips); Association (aeroplane uses strip)</td><td>A strip belongs to exactly one airport (composition); the aeroplane uses the strip (association)</td></tr>
+  <tr><td>iv. Aeroplane carries passengers from source to destination</td><td>Aeroplane, Passenger, Source, Destination</td><td>Association</td><td>Aeroplane carries passengers (1 to many); departs from Source and arrives at Destination</td></tr>
+  <tr><td>v. Managed by captain, co-pilot, cabin crew (air hostesses, attendants)</td><td>CabinCrew, Captain, CoPilot, AirHostess, Attendant, Aeroplane</td><td>Generalisation (CabinCrew subtypes); Association (manages)</td><td>Captain, CoPilot, AirHostess, Attendant are all subtypes of CabinCrew; CabinCrew manages the Aeroplane</td></tr>
+</table>
+
+<div class="diagram-box no-break">
+<svg width="680" height="840" viewBox="0 0 680 860" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ah18" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="gen18" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10Z" fill="white" stroke="#555" stroke-width="1.2"/>
+  </marker>
+</defs>
+<!-- Statement labels -->
+<text x="20" y="18" font-size="10" fill="#888" font-family="Arial" font-style="italic">i. Airline has employees</text>
+<!-- AirlineCompany -->
+<rect x="20" y="26" width="155" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="26" width="155" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="97" y="43" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">AirlineCompany</text>
+<line x1="20" y1="52" x2="175" y2="52" stroke="#aaa" stroke-width="0.5"/>
+<text x="28" y="68" font-size="9" fill="#444" font-family="Arial">- companyName: String</text>
+<text x="28" y="84" font-size="9" fill="#444" font-family="Arial">- country: String</text>
+<!-- Hollow diamond aggregation -->
+<path d="M175 60 L189 53 L203 60 L189 67 Z" fill="white" stroke="#555" stroke-width="0.8"/>
+<line x1="203" y1="60" x2="230" y2="60" stroke="#555" stroke-width="0.8"/>
+<text x="178" y="50" font-size="9" fill="#888" font-family="Arial">1</text>
+<text x="207" y="50" font-size="9" fill="#888" font-family="Arial">1..*</text>
+<!-- Employee -->
+<rect x="230" y="26" width="140" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="230" y="26" width="140" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="300" y="43" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Employee</text>
+<line x1="230" y1="52" x2="370" y2="52" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="68" font-size="9" fill="#444" font-family="Arial">- employeeID: String</text>
+<text x="238" y="84" font-size="9" fill="#444" font-family="Arial">- name: String</text>
+<text x="385" y="60" font-size="9" fill="#888" font-family="Arial">Aggregation</text>
+
+<!-- ii -->
+<line x1="20" y1="114" x2="660" y2="114" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3 4"/>
+<text x="20" y="130" font-size="10" fill="#888" font-family="Arial" font-style="italic">ii. Team builds an aeroplane which has components</text>
+<!-- Team -->
+<rect x="20" y="140" width="120" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="140" width="120" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="80" y="157" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Team</text>
+<line x1="20" y1="166" x2="140" y2="166" stroke="#aaa" stroke-width="0.5"/>
+<text x="28" y="182" font-size="9" fill="#444" font-family="Arial">- teamName: String</text>
+<text x="28" y="198" font-size="9" fill="#444" font-family="Arial">+ build(): void</text>
+<line x1="140" y1="172" x2="215" y2="172" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<text x="178" y="165" text-anchor="middle" font-size="9" fill="#555" font-family="Arial">builds</text>
+<!-- Aeroplane (central) -->
+<rect x="215" y="140" width="145" height="86" rx="4" fill="#f8faff" stroke="#555" stroke-width="1.2"/>
+<rect x="215" y="140" width="145" height="26" rx="4" fill="#bfdbfe" stroke="#555" stroke-width="1.2"/>
+<text x="287" y="157" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Aeroplane</text>
+<line x1="215" y1="166" x2="360" y2="166" stroke="#aaa" stroke-width="0.5"/>
+<text x="223" y="182" font-size="9" fill="#444" font-family="Arial">- planeID: String</text>
+<text x="223" y="198" font-size="9" fill="#444" font-family="Arial">- model: String</text>
+<text x="223" y="214" font-size="9" fill="#444" font-family="Arial">- capacity: Integer</text>
+<!-- Composition filled diamond -->
+<path d="M360 182 L374 175 L388 182 L374 189 Z" fill="#555" stroke="#555" stroke-width="0.5"/>
+<line x1="388" y1="182" x2="440" y2="182" stroke="#555" stroke-width="0.8"/>
+<text x="363" y="172" font-size="9" fill="#888" font-family="Arial">1</text>
+<text x="390" y="172" font-size="9" fill="#888" font-family="Arial">1..*</text>
+<!-- Component -->
+<rect x="440" y="140" width="145" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="440" y="140" width="145" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="512" y="157" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Component</text>
+<line x1="440" y1="166" x2="585" y2="166" stroke="#aaa" stroke-width="0.5"/>
+<text x="448" y="182" font-size="9" fill="#444" font-family="Arial">- componentID: String</text>
+<text x="448" y="198" font-size="9" fill="#444" font-family="Arial">- partName: String</text>
+<text x="598" y="182" font-size="9" fill="#888" font-family="Arial">Composition</text>
+
+<!-- iii -->
+<line x1="20" y1="248" x2="660" y2="248" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3 4"/>
+<text x="20" y="264" font-size="10" fill="#888" font-family="Arial" font-style="italic">iii. Aeroplane lands and takes off from a strip in an airport</text>
+<!-- Airport -->
+<rect x="20" y="274" width="140" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="274" width="140" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="90" y="291" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Airport</text>
+<line x1="20" y1="300" x2="160" y2="300" stroke="#aaa" stroke-width="0.5"/>
+<text x="28" y="316" font-size="9" fill="#444" font-family="Arial">- airportCode: String</text>
+<text x="28" y="332" font-size="9" fill="#444" font-family="Arial">- city: String</text>
+<!-- Composition airport has strip -->
+<path d="M160 308 L174 301 L188 308 L174 315 Z" fill="#555" stroke="#555" stroke-width="0.5"/>
+<line x1="188" y1="308" x2="230" y2="308" stroke="#555" stroke-width="0.8"/>
+<!-- Strip -->
+<rect x="230" y="274" width="130" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="230" y="274" width="130" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="295" y="291" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Strip (Runway)</text>
+<line x1="230" y1="300" x2="360" y2="300" stroke="#aaa" stroke-width="0.5"/>
+<text x="238" y="316" font-size="9" fill="#444" font-family="Arial">- stripID: String</text>
+<text x="238" y="332" font-size="9" fill="#444" font-family="Arial">- length: Double</text>
+<!-- Aeroplane uses strip -->
+<line x1="360" y1="308" x2="430" y2="308" stroke="#555" stroke-width="0.8"/>
+<line x1="430" y1="308" x2="430" y2="193" stroke="#555" stroke-width="0.8"/>
+<line x1="430" y1="193" x2="360" y2="193" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<text x="445" y="256" font-size="9" fill="#555" font-family="Arial">lands/takes off</text>
+
+<!-- iv -->
+<line x1="20" y1="366" x2="660" y2="366" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3 4"/>
+<text x="20" y="382" font-size="10" fill="#888" font-family="Arial" font-style="italic">iv. Aeroplane carries passengers from source to destination</text>
+<!-- Passenger -->
+<rect x="20" y="392" width="140" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="392" width="140" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="90" y="409" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Passenger</text>
+<line x1="20" y1="418" x2="160" y2="418" stroke="#aaa" stroke-width="0.5"/>
+<text x="28" y="434" font-size="9" fill="#444" font-family="Arial">- passengerID: String</text>
+<text x="28" y="450" font-size="9" fill="#444" font-family="Arial">- name: String</text>
+<!-- Aeroplane carries passenger -->
+<line x1="215" y1="202" x2="195" y2="202" stroke="#555" stroke-width="0.8"/>
+<line x1="195" y1="202" x2="195" y2="426" stroke="#555" stroke-width="0.8"/>
+<line x1="195" y1="426" x2="160" y2="426" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<text x="182" y="316" font-size="9" fill="#555" font-family="Arial" transform="rotate(-90,182,316)">carries 0..*</text>
+<!-- Source -->
+<rect x="350" y="392" width="135" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="350" y="392" width="135" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="417" y="409" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Source</text>
+<line x1="350" y1="418" x2="485" y2="418" stroke="#aaa" stroke-width="0.5"/>
+<text x="358" y="434" font-size="9" fill="#444" font-family="Arial">- cityName: String</text>
+<text x="358" y="450" font-size="9" fill="#444" font-family="Arial">- airportCode: String</text>
+<!-- Destination -->
+<rect x="510" y="392" width="145" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="510" y="392" width="145" height="26" rx="4" fill="#dbeafe" stroke="#aaa" stroke-width="0.8"/>
+<text x="582" y="409" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a5f" font-family="Arial">Destination</text>
+<line x1="510" y1="418" x2="655" y2="418" stroke="#aaa" stroke-width="0.5"/>
+<text x="518" y="434" font-size="9" fill="#444" font-family="Arial">- cityName: String</text>
+<text x="518" y="450" font-size="9" fill="#444" font-family="Arial">- airportCode: String</text>
+<line x1="287" y1="226" x2="287" y2="426" stroke="#555" stroke-width="0.8"/>
+<line x1="287" y1="426" x2="350" y2="426" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<line x1="287" y1="440" x2="287" y2="460" stroke="#555" stroke-width="0.8"/>
+<line x1="287" y1="460" x2="510" y2="460" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<text x="310" y="422" font-size="9" fill="#555" font-family="Arial">departs from</text>
+<text x="388" y="456" font-size="9" fill="#555" font-family="Arial">arrives at</text>
+
+<!-- v -->
+<line x1="20" y1="488" x2="660" y2="488" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="3 4"/>
+<text x="20" y="504" font-size="10" fill="#888" font-family="Arial" font-style="italic">v. Managed by captain, co-pilot and cabin crew (air hostesses, attendants)</text>
+<!-- CabinCrew -->
+<rect x="220" y="514" width="135" height="68" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="220" y="514" width="135" height="26" rx="4" fill="#eeedfe" stroke="#aaa" stroke-width="0.8"/>
+<text x="287" y="531" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">CabinCrew</text>
+<line x1="220" y1="540" x2="355" y2="540" stroke="#aaa" stroke-width="0.5"/>
+<text x="228" y="556" font-size="9" fill="#444" font-family="Arial">- staffID: String</text>
+<text x="228" y="572" font-size="9" fill="#444" font-family="Arial">- name: String</text>
+<line x1="287" y1="514" x2="287" y2="226" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<text x="294" y="376" font-size="9" fill="#555" font-family="Arial">manages</text>
+<!-- Generalisation lines -->
+<line x1="287" y1="582" x2="287" y2="614" stroke="#555" stroke-width="0.8"/>
+<line x1="80" y1="614" x2="497" y2="614" stroke="#555" stroke-width="0.8"/>
+<line x1="80" y1="614" x2="80" y2="630" stroke="#555" stroke-width="0.8" marker-end="url(#gen18)"/>
+<line x1="217" y1="614" x2="217" y2="630" stroke="#555" stroke-width="0.8" marker-end="url(#gen18)"/>
+<line x1="360" y1="614" x2="360" y2="630" stroke="#555" stroke-width="0.8" marker-end="url(#gen18)"/>
+<line x1="497" y1="614" x2="497" y2="630" stroke="#555" stroke-width="0.8" marker-end="url(#gen18)"/>
+<!-- Captain -->
+<rect x="20" y="630" width="120" height="56" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="20" y="630" width="120" height="26" rx="4" fill="#eeedfe" stroke="#aaa" stroke-width="0.8"/>
+<text x="80" y="647" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Captain</text>
+<line x1="20" y1="656" x2="140" y2="656" stroke="#aaa" stroke-width="0.5"/>
+<text x="28" y="672" font-size="9" fill="#444" font-family="Arial">+ commandFlight()</text>
+<!-- CoPilot -->
+<rect x="158" y="630" width="115" height="56" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="158" y="630" width="115" height="26" rx="4" fill="#eeedfe" stroke="#aaa" stroke-width="0.8"/>
+<text x="215" y="647" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">CoPilot</text>
+<line x1="158" y1="656" x2="273" y2="656" stroke="#aaa" stroke-width="0.5"/>
+<text x="166" y="672" font-size="9" fill="#444" font-family="Arial">+ assistPilot()</text>
+<!-- AirHostess -->
+<rect x="298" y="630" width="120" height="56" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="298" y="630" width="120" height="26" rx="4" fill="#eeedfe" stroke="#aaa" stroke-width="0.8"/>
+<text x="358" y="647" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">AirHostess</text>
+<line x1="298" y1="656" x2="418" y2="656" stroke="#aaa" stroke-width="0.5"/>
+<text x="306" y="672" font-size="9" fill="#444" font-family="Arial">+ servePassengers()</text>
+<!-- Attendant -->
+<rect x="437" y="630" width="115" height="56" rx="4" fill="#f8faff" stroke="#aaa" stroke-width="0.8"/>
+<rect x="437" y="630" width="115" height="26" rx="4" fill="#eeedfe" stroke="#aaa" stroke-width="0.8"/>
+<text x="494" y="647" text-anchor="middle" font-size="11" font-weight="bold" fill="#26215c" font-family="Arial">Attendant</text>
+<line x1="437" y1="656" x2="552" y2="656" stroke="#aaa" stroke-width="0.5"/>
+<text x="445" y="672" font-size="9" fill="#444" font-family="Arial">+ assistCrew()</text>
+
+<!-- Legend bottom -->
+<rect x="20" y="714" width="640" height="80" rx="6" fill="#f9fafb" stroke="#e5e7eb" stroke-width="0.5"/>
+<text x="340" y="732" text-anchor="middle" font-size="11" font-weight="bold" fill="#333" font-family="Arial">Legend</text>
+<path d="M36 754 L48 748 L60 754 L48 760 Z" fill="white" stroke="#555" stroke-width="0.8"/>
+<line x1="60" y1="754" x2="80" y2="754" stroke="#555" stroke-width="0.8"/>
+<text x="86" y="758" font-size="10" fill="#555" font-family="Arial">Aggregation</text>
+<path d="M165 754 L177 748 L189 754 L177 760 Z" fill="#555" stroke="#555" stroke-width="0.5"/>
+<line x1="189" y1="754" x2="210" y2="754" stroke="#555" stroke-width="0.8"/>
+<text x="216" y="758" font-size="10" fill="#555" font-family="Arial">Composition</text>
+<line x1="300" y1="754" x2="330" y2="754" stroke="#555" stroke-width="0.8" marker-end="url(#ah18)"/>
+<text x="336" y="758" font-size="10" fill="#555" font-family="Arial">Association</text>
+<line x1="430" y1="754" x2="460" y2="754" stroke="#555" stroke-width="0.8" marker-end="url(#gen18)"/>
+<text x="466" y="758" font-size="10" fill="#555" font-family="Arial">Generalisation</text>
+<text x="40" y="784" font-size="9" fill="#888" font-family="Arial">i: Aggregation  |  ii: Composition + Association  |  iii: Composition + Association  |  iv: Association  |  v: Generalisation + Association</text>
+</svg>
+<div class="diagram-caption">Figure 18.1 — Class relationships derived from all five statements</div>
+</div>
+
+</div><!-- end .page -->
+</body>
+</html>
